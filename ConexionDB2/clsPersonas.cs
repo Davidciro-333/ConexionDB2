@@ -45,6 +45,7 @@ namespace ConexionDB2
             sql.Parameters.AddWithValue("@Direccion", this.Direccion);
             sql.ExecuteNonQuery();
 
+            Conexion.Close();
             return true;
         }
 
@@ -60,6 +61,7 @@ namespace ConexionDB2
             SqlDataAdapter sqlData = new SqlDataAdapter(sql);
             sqlData.Fill(dataTable);
 
+            Conexion.Close();
             return dataTable;
         }
 
@@ -77,6 +79,7 @@ namespace ConexionDB2
             sql.Parameters.AddWithValue("@Direccion", this.Direccion);
             sql.ExecuteNonQuery();
 
+            Conexion.Close();
             return true;
         }
 
@@ -91,6 +94,7 @@ namespace ConexionDB2
             sql.Parameters.AddWithValue("@Id", this.Id);
             sql.ExecuteNonQuery();
 
+            Conexion.Close();
             return true;
         }
 
@@ -109,6 +113,7 @@ namespace ConexionDB2
 
             sqlData.Fill(dataTable);
 
+            Conexion.Close();
             return dataTable;
         }
     }

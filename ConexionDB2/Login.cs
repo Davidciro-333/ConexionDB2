@@ -36,7 +36,22 @@ namespace ConexionDB2
 
         private void btnIngresar_Click(object sender, EventArgs e)
         {
-            Verificacion();
+
+            clsLogin login = new clsLogin(txtUsuario.Text, txtPassword.Text);
+
+            if (login.VerificarLogin() == true)
+            {
+                Verificacion();
+                frmPersonas personas = new frmPersonas();
+                personas.Show();
+            }
+            else
+            {
+                lblError.Show();
+                txtUsuario.Text = "";
+                txtPassword.Text = "";
+            }
+
         }
     }
 }

@@ -39,16 +39,11 @@ namespace ConexionDB2
             this.txtbApellido = new System.Windows.Forms.TextBox();
             this.txtbNombre = new System.Windows.Forms.TextBox();
             this.txtbID = new System.Windows.Forms.TextBox();
-            this.btnBorrar = new System.Windows.Forms.Button();
+            this.btnEliminar = new System.Windows.Forms.Button();
             this.btnActualizar = new System.Windows.Forms.Button();
             this.btnConsultar = new System.Windows.Forms.Button();
             this.btnCrear = new System.Windows.Forms.Button();
             this.dtgPersonas = new System.Windows.Forms.DataGridView();
-            this.clmID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmApellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmCorreo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmDireccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dtgPersonas)).BeginInit();
             this.SuspendLayout();
             // 
@@ -137,15 +132,16 @@ namespace ConexionDB2
             this.txtbID.Size = new System.Drawing.Size(100, 20);
             this.txtbID.TabIndex = 10;
             // 
-            // btnBorrar
+            // btnEliminar
             // 
-            this.btnBorrar.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBorrar.Location = new System.Drawing.Point(642, 366);
-            this.btnBorrar.Name = "btnBorrar";
-            this.btnBorrar.Size = new System.Drawing.Size(111, 34);
-            this.btnBorrar.TabIndex = 18;
-            this.btnBorrar.Text = "Borrar";
-            this.btnBorrar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEliminar.Location = new System.Drawing.Point(642, 366);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(111, 34);
+            this.btnEliminar.TabIndex = 18;
+            this.btnEliminar.Text = "Eliminar";
+            this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // btnActualizar
             // 
@@ -156,6 +152,7 @@ namespace ConexionDB2
             this.btnActualizar.TabIndex = 17;
             this.btnActualizar.Text = "Actualizar";
             this.btnActualizar.UseVisualStyleBackColor = true;
+            this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
             // 
             // btnConsultar
             // 
@@ -166,6 +163,7 @@ namespace ConexionDB2
             this.btnConsultar.TabIndex = 16;
             this.btnConsultar.Text = "Consultar";
             this.btnConsultar.UseVisualStyleBackColor = true;
+            this.btnConsultar.Click += new System.EventHandler(this.btnConsultar_Click);
             // 
             // btnCrear
             // 
@@ -176,50 +174,16 @@ namespace ConexionDB2
             this.btnCrear.TabIndex = 15;
             this.btnCrear.Text = "Crear";
             this.btnCrear.UseVisualStyleBackColor = true;
+            this.btnCrear.Click += new System.EventHandler(this.btnCrear_Click);
             // 
             // dtgPersonas
             // 
             this.dtgPersonas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgPersonas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.clmID,
-            this.clmNombre,
-            this.clmApellido,
-            this.clmCorreo,
-            this.clmDireccion});
             this.dtgPersonas.Location = new System.Drawing.Point(234, 92);
             this.dtgPersonas.Name = "dtgPersonas";
             this.dtgPersonas.Size = new System.Drawing.Size(554, 268);
             this.dtgPersonas.TabIndex = 19;
-            // 
-            // clmID
-            // 
-            this.clmID.HeaderText = "ID";
-            this.clmID.Name = "clmID";
-            this.clmID.ReadOnly = true;
-            // 
-            // clmNombre
-            // 
-            this.clmNombre.HeaderText = "Nombre";
-            this.clmNombre.Name = "clmNombre";
-            this.clmNombre.ReadOnly = true;
-            // 
-            // clmApellido
-            // 
-            this.clmApellido.HeaderText = "Apellido";
-            this.clmApellido.Name = "clmApellido";
-            this.clmApellido.ReadOnly = true;
-            // 
-            // clmCorreo
-            // 
-            this.clmCorreo.HeaderText = "Correo";
-            this.clmCorreo.Name = "clmCorreo";
-            this.clmCorreo.ReadOnly = true;
-            // 
-            // clmDireccion
-            // 
-            this.clmDireccion.HeaderText = "Direccion";
-            this.clmDireccion.Name = "clmDireccion";
-            this.clmDireccion.ReadOnly = true;
+            this.dtgPersonas.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dtgPersonas_MouseClick);
             // 
             // frmPersonas
             // 
@@ -227,7 +191,7 @@ namespace ConexionDB2
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.dtgPersonas);
-            this.Controls.Add(this.btnBorrar);
+            this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnActualizar);
             this.Controls.Add(this.btnConsultar);
             this.Controls.Add(this.btnCrear);
@@ -243,6 +207,7 @@ namespace ConexionDB2
             this.Controls.Add(this.lblID);
             this.Name = "frmPersonas";
             this.Text = "Personas";
+            this.Load += new System.EventHandler(this.frmPersonas_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtgPersonas)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -261,15 +226,10 @@ namespace ConexionDB2
         private System.Windows.Forms.TextBox txtbApellido;
         private System.Windows.Forms.TextBox txtbNombre;
         private System.Windows.Forms.TextBox txtbID;
-        private System.Windows.Forms.Button btnBorrar;
+        private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Button btnActualizar;
         private System.Windows.Forms.Button btnConsultar;
         private System.Windows.Forms.Button btnCrear;
         private System.Windows.Forms.DataGridView dtgPersonas;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmNombre;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmApellido;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmCorreo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmDireccion;
     }
 }

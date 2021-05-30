@@ -55,6 +55,7 @@ namespace ConexionDB2
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.Size = new System.Drawing.Size(116, 21);
             this.txtUsuario.TabIndex = 1;
+            this.txtUsuario.Text = "Dciro333";
             // 
             // lblPassword
             // 
@@ -71,8 +72,10 @@ namespace ConexionDB2
             this.txtPassword.Location = new System.Drawing.Point(262, 250);
             this.txtPassword.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtPassword.Name = "txtPassword";
+            this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(116, 21);
             this.txtPassword.TabIndex = 3;
+            this.txtPassword.Text = "200303";
             // 
             // btnIngresar
             // 

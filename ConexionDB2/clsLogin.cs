@@ -29,12 +29,19 @@ namespace ConexionDB2
             SqlConnection Conexion = new SqlConnection("server=localhost\\SQLEXPRESS;database=ConexionDB2;Integrated Security=true");
             Conexion.Open();
 
-            string UserPass = "select NomUser, Pass from Login1";
+            string UserPass = "select NomUser, Pass from Login1 where NomUser = @NomUser and Pass = @Pass";
 
             SqlCommand sql = new SqlCommand(UserPass, Conexion);
+            sql.Parameters.AddWithValue("NomUser", this.NomUser);
+            sql.Parameters.AddWithValue("Pass", this.Pass);
+
+            SqlDataAdapter sqlData = new SqlDataAdapter(sql);
+            DataTable dataTable = new DataTable();
+            sqlData.Fill(dataTable);
+
             Conexion.Close();
 
-            if (this.NomUser == sql.CommandText && this.Pass == sql.CommandText)
+            if (dataTable.Rows.Count == 1)
             {
                 return true;
             }
